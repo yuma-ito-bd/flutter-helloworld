@@ -64,34 +64,39 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-        appBar: AppBar(
-            // TRY THIS: Try changing the color here to a specific color (to
-            // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-            // change color while the other colors stay the same.
-            backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-            // Here we take the value from the MyHomePage object that was created by
-            // the App.build method, and use it to set our appbar title.
-            title: const Row(
-              children: [
-                Icon(Icons.create),
-                Text("初めてのタイトル"),
-              ],
-            )),
-        body: Column(
-          children: [
-            const Text("Hello World!"),
-            const Text("ハローワールド"),
-            TextButton(
-                onPressed: () => {print("ボタンが押された")}, child: const Text("ボタン")),
-            const Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                Icon(Icons.favorite, color: Colors.pink, size: 24.0),
-                Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
-                Icon(Icons.beach_access, color: Colors.blue, size: 34.0),
-              ],
-            )
-          ],
-        ));
+      appBar: AppBar(
+          // TRY THIS: Try changing the color here to a specific color (to
+          // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
+          // change color while the other colors stay the same.
+          backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+          // Here we take the value from the MyHomePage object that was created by
+          // the App.build method, and use it to set our appbar title.
+          title: const Row(
+            children: [
+              Icon(Icons.create),
+              Text("初めてのタイトル"),
+            ],
+          )),
+      body: Column(
+        children: [
+          const Text("Hello World!"),
+          const Text("ハローワールド"),
+          TextButton(
+              onPressed: () => {print("ボタンが押された")}, child: const Text("ボタン")),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.favorite, color: Colors.pink, size: 24.0),
+              Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
+              Icon(Icons.beach_access, color: Colors.blue, size: 34.0),
+            ],
+          )
+        ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () => {print("押した")},
+        child: const Icon(Icons.timer),
+      ),
+    );
   }
 }
