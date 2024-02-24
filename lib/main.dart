@@ -79,7 +79,15 @@ class _MyHomePageState extends State<MyHomePage> {
             const Text("ハローワールド"),
             TextButton(
                 onPressed: () => {print("ボタンが押された")}, 
-                child: const Text("ボタン"))
+                child: const Text("ボタン")),
+          const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              Icon(Icons.favorite, color: Colors.pink, size: 24.0),
+              Icon(Icons.audiotrack, color: Colors.green, size: 30.0),
+              Icon(Icons.beach_access, color: Colors.blue, size: 34.0),
+            ],
+          )
           ],
         ));
   }
