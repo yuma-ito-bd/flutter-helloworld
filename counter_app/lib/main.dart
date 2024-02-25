@@ -82,69 +82,23 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Column(
-        children: <Widget>[
-          Text(
-            "Display Large",
-            style: Theme.of(context).textTheme.displayLarge,
-          ),
-          Text(
-            "Display Medium",
-            style: Theme.of(context).textTheme.displayMedium,
-          ),
-          Text(
-            "Display Small",
-            style: Theme.of(context).textTheme.displaySmall,
-          ),
-          Text(
-            "Headline Large",
-            style: Theme.of(context).textTheme.headlineLarge,
-          ),
-          Text(
-            "Headline Medium",
-            style: Theme.of(context).textTheme.headlineMedium,
-          ),
-          Text(
-            "Headline Small",
-            style: Theme.of(context).textTheme.headlineSmall,
-          ),
-          Text(
-            "Title Large",
-            style: Theme.of(context).textTheme.titleLarge,
-          ),
-          Text(
-            "Title Medium",
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-          Text(
-            "Title Small",
-            style: Theme.of(context).textTheme.titleSmall,
-          ),
-          Text(
-            "Label Large",
-            style: Theme.of(context).textTheme.labelLarge,
-          ),
-          Text(
-            "Label Medium",
-            style: Theme.of(context).textTheme.labelMedium,
-          ),
-          Text(
-            "Label Small",
-            style: Theme.of(context).textTheme.labelSmall,
-          ),
-          Text(
-            "Body Large",
-            style: Theme.of(context).textTheme.bodyLarge,
-          ),
-          Text(
-            "Body Medium",
-            style: Theme.of(context).textTheme.bodyMedium,
-          ),
-          Text(
-            "Body Small",
-            style: Theme.of(context).textTheme.bodySmall,
-          ),
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            AnimatedContainer(duration: const Duration(seconds: 3), 
+              width: _flag ? 100 : 50,
+              height: _flag ? 50 : 100,
+              padding: _flag ? const EdgeInsets.all(0): const EdgeInsets.all(30),
+              margin: _flag ? const EdgeInsets.all(0): const EdgeInsets.all(30),
+              transform: _flag ? Matrix4.skewX(0.0) : Matrix4.skewX(0.3),
+              color: _flag ? Colors.blue : Colors.grey,
+            ),
+            AnimatedSwitcher(duration: const Duration(seconds: 3),
+            child: _flag ? const Text("なにもない") : const Icon(Icons.favorite, color: Colors.pink),
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _click,
