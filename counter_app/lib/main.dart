@@ -67,11 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
       // called again, and so nothing would appear to happen.
       _counter++;
 
-      if (_counter % 2 == 0) {
-        _type = "偶数";
-      } else {
-        _type = "奇数";
-      }
+      _type = _counter % 2 == 0 ? "偶数" : "奇数";
     });
   }
 
