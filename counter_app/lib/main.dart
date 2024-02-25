@@ -82,50 +82,69 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            AnimatedOpacity(
-              opacity: _flag ? 0.1 : 1.0,
-              duration: const Duration(seconds: 3),
-              child: Text(
-                "消える文字",
-                style: Theme.of(context).textTheme.headlineMedium,
-              ),
-            ),
-            AnimatedSize(
-              duration: const Duration(seconds: 3),
-              child: SizedBox(
-                width: _flag ? 50 : 200,
-                height: _flag ? 50 : 200,
-                child: Container(
-                  color: Colors.purple,
-                ),
-              ),
-            ),
-            AnimatedAlign(
-                duration: const Duration(seconds: 3),
-                alignment: _flag ? Alignment.topLeft : Alignment.bottomRight,
-                child: SizedBox(width: 50, height: 50, child: Container(color: Colors.green,),)
-                )
-          ],
-        ),
+      body: Column(
+        children: <Widget>[
+          Text(
+            "Display Large",
+            style: Theme.of(context).textTheme.displayLarge,
+          ),
+          Text(
+            "Display Medium",
+            style: Theme.of(context).textTheme.displayMedium,
+          ),
+          Text(
+            "Display Small",
+            style: Theme.of(context).textTheme.displaySmall,
+          ),
+          Text(
+            "Headline Large",
+            style: Theme.of(context).textTheme.headlineLarge,
+          ),
+          Text(
+            "Headline Medium",
+            style: Theme.of(context).textTheme.headlineMedium,
+          ),
+          Text(
+            "Headline Small",
+            style: Theme.of(context).textTheme.headlineSmall,
+          ),
+          Text(
+            "Title Large",
+            style: Theme.of(context).textTheme.titleLarge,
+          ),
+          Text(
+            "Title Medium",
+            style: Theme.of(context).textTheme.titleMedium,
+          ),
+          Text(
+            "Title Small",
+            style: Theme.of(context).textTheme.titleSmall,
+          ),
+          Text(
+            "Label Large",
+            style: Theme.of(context).textTheme.labelLarge,
+          ),
+          Text(
+            "Label Medium",
+            style: Theme.of(context).textTheme.labelMedium,
+          ),
+          Text(
+            "Label Small",
+            style: Theme.of(context).textTheme.labelSmall,
+          ),
+          Text(
+            "Body Large",
+            style: Theme.of(context).textTheme.bodyLarge,
+          ),
+          Text(
+            "Body Medium",
+            style: Theme.of(context).textTheme.bodyMedium,
+          ),
+          Text(
+            "Body Small",
+            style: Theme.of(context).textTheme.bodySmall,
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: _click,
