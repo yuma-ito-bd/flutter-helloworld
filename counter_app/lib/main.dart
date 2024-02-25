@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -113,9 +114,15 @@ class _MyHomePageState extends State<MyHomePage> {
               style: Theme.of(context).textTheme.headlineMedium,
             ),
             if (_counter % 2 == 0)
-              const Text(
-                "偶数です",
-                style: TextStyle(fontSize: 20, color: Colors.red),
+              const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(FontAwesomeIcons.info, size: 20),
+                  Text(
+                    "偶数です",
+                    style: TextStyle(fontSize: 20, color: Colors.red),
+                  )
+                ],
               )
           ],
         ),
