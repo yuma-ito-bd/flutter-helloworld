@@ -1,5 +1,5 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,17 +55,46 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
+  late AnimationController _animationController;
+  late Animation _animation;
 
-  void _incrementCounter() {
+  // 再生
+  _forward() async {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _animationController.forward();
+    });
+  }
+
+  // 停止
+  _stop() async {
+    setState(() {
+      _animationController.stop();
+    });
+  }
+
+  // 逆再生
+  _reverse() async {
+    setState(() {
+      _animationController.reverse();
+    });
+  }
+
+  // 生成
+  @override
+  void initState() {
+    super.initState();
+    _animationController =
+        AnimationController(vsync: this, duration: const Duration(seconds: 1));
+    _animation = _animationController.drive(Tween(begin: 0.0, end: -2.0 * pi));
+  }
+
+  // 破棄
+  @override
+  void dispose() {
+    setState(() {
+      _animationController.dispose();
+      super.dispose();
     });
   }
 
@@ -88,50 +117,32 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
-        child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          //
-          // TRY THIS: Invoke "debug painting" (choose the "Toggle Debug Paint"
-          // action in the IDE, or press "p" in the console), to see the
-          // wireframe for each widget.
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-            if (_counter % 2 == 0)
-              const Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(FontAwesomeIcons.info, size: 20),
-                  Text(
-                    "偶数です",
-                    style: TextStyle(fontSize: 20, color: Colors.red),
-                  )
-                ],
-              )
-          ],
-        ),
+          child: AnimatedBuilder(
+             animation: _animation,
+        builder: (context, _) {
+          return Transform.rotate(
+              angle: _animation.value,
+              child: const Icon(Icons.cached, size: 100));
+        },
+      )),
+      // 再生、停止、逆再生ボタン
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          FloatingActionButton(
+            onPressed: _forward,
+            child: const Icon(Icons.arrow_forward),
+          ),
+          FloatingActionButton(
+            onPressed: _stop,
+            child: const Icon(Icons.pause),
+          ),
+          FloatingActionButton(
+            onPressed: _reverse,
+            child: const Icon(Icons.arrow_back),
+          )
+        ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
