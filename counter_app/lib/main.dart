@@ -1,5 +1,5 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
+import 'test_page1.dart';
 
 void main() {
   runApp(const MyApp());
@@ -55,94 +55,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> with TickerProviderStateMixin {
-  late AnimationController _animationController;
-  late Animation _animation;
-
-  // 再生
-  _forward() async {
-    setState(() {
-      _animationController.forward();
-    });
-  }
-
-  // 停止
-  _stop() async {
-    setState(() {
-      _animationController.stop();
-    });
-  }
-
-  // 逆再生
-  _reverse() async {
-    setState(() {
-      _animationController.reverse();
-    });
-  }
-
-  // 生成
-  @override
-  void initState() {
-    super.initState();
-    _animationController =
-        AnimationController(vsync: this, duration: const Duration(seconds: 1));
-    _animation = _animationController.drive(Tween(begin: 0.0, end: -2.0 * pi));
-  }
-
-  // 破棄
-  @override
-  void dispose() {
-    setState(() {
-      _animationController.dispose();
-      super.dispose();
-    });
-  }
-
+class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
-    return Scaffold(
-      appBar: AppBar(
-        // TRY THIS: Try changing the color here to a specific color (to
-        // Colors.amber, perhaps?) and trigger a hot reload to see the AppBar
-        // change color while the other colors stay the same.
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      body: Center(
-          child: AnimatedBuilder(
-             animation: _animation,
-        builder: (context, _) {
-          return Transform.rotate(
-              angle: _animation.value,
-              child: const Icon(Icons.cached, size: 100));
-        },
-      )),
-      // 再生、停止、逆再生ボタン
-      floatingActionButton: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FloatingActionButton(
-            onPressed: _forward,
-            child: const Icon(Icons.arrow_forward),
-          ),
-          FloatingActionButton(
-            onPressed: _stop,
-            child: const Icon(Icons.pause),
-          ),
-          FloatingActionButton(
-            onPressed: _reverse,
-            child: const Icon(Icons.arrow_back),
-          )
-        ],
-      ),
-    );
+    return Scaffold(body: TestPage1());
   }
 }
