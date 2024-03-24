@@ -8,20 +8,12 @@ class TestPage2 extends StatelessWidget {
           title: const Text('Test2'),
         ),
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              TextButton(
-                  onPressed: () => {Navigator.of(context).pushNamed('/test3')},
-                  child: const Text("進む", style: TextStyle(fontSize: 80))),
-              TextButton(
-                  onPressed: () => {Navigator.of(context).pop()},
-                  child: const Text(
-                    "戻る",
-                    style: TextStyle(fontSize: 80),
-                  ))
-            ],
+            child: Container(
+          color: Colors.greenAccent,
+          child: const Text(
+            "Test2",
+            style: TextStyle(fontSize: 80),
           ),
-        ));
+        )));
   }
 }
