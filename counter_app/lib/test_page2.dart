@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'test_page3.dart';
 
 class TestPage2 extends StatelessWidget {
   @override
@@ -13,12 +12,7 @@ class TestPage2 extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TextButton(
-                  onPressed: () => {
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (context) {
-                          return TestPage3();
-                        }))
-                      },
+                  onPressed: () => {Navigator.of(context).pushNamed('/test3')},
                   child: const Text("進む", style: TextStyle(fontSize: 80))),
               TextButton(
                   onPressed: () => {Navigator.of(context).pop()},
