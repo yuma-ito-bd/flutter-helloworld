@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'test_page1.dart';
-import 'test_page2.dart';
-import 'test_page3.dart';
 
 void main() {
   runApp(const MyApp());
