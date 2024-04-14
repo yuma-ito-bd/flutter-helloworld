@@ -58,51 +58,29 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  late PageController _pageController;
-  int _selectedIndex = 0;
+  int _counter = 0;
 
-  final _pages = [
-    TestPage1(),
-    TestPage2(),
-    TestPage3(),
-  ];
-
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(initialPage: _selectedIndex);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _pageController.dispose();
-  }
-
-  void _onPageChanged(int index) {
+  void increment() {
     setState(() {
-      _selectedIndex = index;
+      _counter++;
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: PageView(
-          controller: _pageController,
-          onPageChanged: _onPageChanged,
-          children: _pages,
-        ),
+        body: Center(
+            child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            const Text('count'),
+            Text('$_counter', style: Theme.of(context).textTheme.headlineLarge),
+          ],
+        )),
         floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            _pageController.animateToPage(
-              _selectedIndex + 1,
-              duration: const Duration(milliseconds: 400),
-              curve: Curves.easeInOut,
-            );
-          },
-          tooltip: 'Next',
-          child: const Icon(Icons.arrow_forward),
+          onPressed: increment,
+          tooltip: 'Increment',
+          child: const Icon(Icons.add),
         ));
   }
 }
